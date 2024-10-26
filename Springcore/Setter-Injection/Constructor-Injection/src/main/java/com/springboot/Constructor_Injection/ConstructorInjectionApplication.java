@@ -3,7 +3,11 @@ package com.springboot.Constructor_Injection;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication()
+@SpringBootApplication(
+	scanBasePackages={"com.springboot.Constructor_Injection",
+	                   "com.springboot.util"
+	}
+)
 public class ConstructorInjectionApplication {
 
 	public static void main(String[] args) {
