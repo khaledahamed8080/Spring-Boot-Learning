@@ -21,13 +21,34 @@ public class HibernateApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner ->{
 			// getStudents(studentDAO);
+			createmultipleStudent(studentDAO);
 			// lastname(studentDAO);
 			// update(studentDAO);
 			// delete(studentDAO);
-			deleteallrows(studentDAO);
+			//deleteallrows(studentDAO);
 		};
 	}
-   
+    private void createmultipleStudent(StudentDAO studentDAO){
+		System.out.println("CREATING NEW STUDENT OBJECT........");
+		Student thestudent1=new Student("elon","musk","elon00@gmail.com");
+		Student thestudent2=new Student("khaled","ahamed","khaled@gmail.com");
+		Student thestudent3=new Student("suhail","ahamed","suhail@gmail.com");
+		Student thestudent4=new Student("farzana","shakir","farzana@gmail.com");
+
+
+        System.out.println("SAVING THE STUDENT.......");
+		studentDAO.save(thestudent1);
+		studentDAO.save(thestudent2);
+		studentDAO.save(thestudent3);
+		studentDAO.save(thestudent4);
+
+		List<Student> thestudents=studentDAO.findAll();
+
+		for(Student stu:thestudents){
+		   System.out.println(stu);
+		}
+		
+	}
 	
 	private void readStudent(StudentDAO studentDAO){
 		System.out.println("CREATING NEW STUDENT OBJECT........");
