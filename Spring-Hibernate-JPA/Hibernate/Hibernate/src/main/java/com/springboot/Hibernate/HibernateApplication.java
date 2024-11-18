@@ -20,7 +20,9 @@ public class HibernateApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner ->{
-			getStudents(studentDAO);
+			// getStudents(studentDAO);
+			// lastname(studentDAO);
+			update(studentDAO);
 		};
 	}
    
@@ -41,14 +43,30 @@ public class HibernateApplication {
 
 	// }
 
-	private void getStudents(StudentDAO studentDAO){
-     List<Student> thestudents=studentDAO.findAll();
+	// private void getStudents(StudentDAO studentDAO){
+    //  List<Student> thestudents=studentDAO.findAll();
 
-	 for(Student stu:thestudents){
-		System.out.println(stu);
-	 }
+	//  for(Student stu:thestudents){
+	// 	System.out.println(stu);
+	//  }
+	// }
+    // private void lastname(StudentDAO studentDAO){
+	// 	List<Student> thestudent=studentDAO.findbyLastName("ahamed");
+
+	// 	for(Student stu:thestudent){
+	// 		System.out.println(stu);
+	// 	}
+	// 	}
+     
+
+	private void update(StudentDAO studentDAO){
+		int stuid=1;
+        Student stu=studentDAO.findbyId(stuid);
+		System.out.println("the ID FOUND IS OF"+stu);
+
+		stu.setLastName("martin");
+		studentDAO.update(stu);
+		System.out.println("THE UPDATED NAME OF THE STUDENT IS OF:"+studentDAO.findbyId(stuid));
 	}
-
-
 	}
 
